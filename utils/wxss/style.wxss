@@ -1,0 +1,37 @@
+html{
+  font-size: 5.3333333333vw;
+  background: #fff;
+  -moz-user-select: none; /*火狐*/
+  -webkit-user-select: none;  /*webkit浏览器*/
+  -ms-user-select: none;   /*IE10*/
+  -khtml-user-select: none; /*早期浏览器*/
+  user-select: none;
+  margin: 0;
+  padding: 0;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+ul>li{
+  list-style: none;
+}
+.df{
+  display: flex;
+}
+.df-1{
+  flex: 1;
+}
+.df-col{
+  display: flex;
+  flex-direction: column;
+}
+.df-j-b{
+  display: flex;
+  justify-content: space-between;
+}
+.df-j-c{
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,41 @@
+<!--pages/music/list.wxml-->
+<view>
+  <view class='typeTitle'>
+    <view class='typeList df-j-b'>
+      <block wx:for="{{types}}" wx:for-item='v' wx:for-index='k' wx:key='k'>
+        <view class="{{k===currentType ? 'itemShow' : ''}} typeItem">{{v}}</view>
+      </block>
+    </view>
+    <view class='navSwiper'>
+      <view style="left:{{currentType * 20}}%" class='navSlider'>
+        <view 
+        style="width:calc(60% + {{lineWidth}}px); margin-left:calc(20% - {{lineLeft}}px); transition: {{lineWidth > 0 ? '' : 'all 0.5s'}};" 
+        class='navLine'></view>
+      </view>
+    </view>
+  </view>
+
+  <swiper>
+    <block wx:for="{{musics}}" wx:for-item='v' wx:for-index='k' wx:key='k'>
+      <swiper-item>
+        <view class="{{currentType === k ? 'swiperShow' : 'swiper'}}">
+          <block wx:for="{{v.audios}}" wx:for-item="e" wx:for-index="i" wx:key="i">
+            <view class="item df {{player.playing.id === e.id && player.status === 1? 'item_show' : ''}}">
+              <image class='item_cover' src="{{'http://audio.22family.com/' + e.cover + '-cover'}}"></image>
+              <view class='item_info df-1'>
+                <view class='item_name'>{{e.name}}</view>
+                <view class='singer_name df'>
+                  <view class='singer_avatar'>
+                    <image class='avatar_img' src="{{'http://audio.22family.com/' + e.singer.avatar + '-avatar'}}"></image>
+                  </view>
+                  {{e.singer.name}}
+                </view>
+                <view class='item_date'>{{dateFormat(e.date)}}</view>
+              </view>
+            </view>
+          </block>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>

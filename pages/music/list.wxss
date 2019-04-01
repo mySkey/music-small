@@ -1,0 +1,109 @@
+/* pages/music/list.wxss */
+.typeTitle{
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+.typeList{
+  height: 1.8rem;
+  padding-bottom: 0.4rem;
+  font-size: 0.7rem;
+  color: #333;
+  align-items: flex-end;
+}
+.typeItem{
+  width: 20%;
+  transition: all 0.3s;
+  text-align: center;
+}
+.itemShow{
+  font-size: 0.9rem;
+  color: #33c9d4;
+}
+
+.navSwiper{
+  position: relative;
+}
+.navSlider{
+  width: 20%;
+  height: 2px;
+  position: absolute;
+  bottom: -1px;
+  transition: all 0.5s;
+}
+.navLine{
+  height: 100%;
+  background: #33c9d4;
+  width: 60%;
+  margin-left: 20%;
+}
+
+
+.swiper{
+  width: 100%;
+  min-height: calc(100vh - 3rem);
+  max-height: calc(100vh - 3rem);
+  padding-top: 2rem;
+  padding-bottom: 3rem;
+}
+.swiperShow{
+  width: 100%;
+  padding-top: 2rem;
+  padding-bottom: 3rem;
+  max-height: auto;
+}
+
+.item{
+  color: #333;
+  padding: 1rem 0.75rem 0.5rem 0.75rem;
+  border-top: 1px solid #eee;
+  align-items: center;
+}
+.swiper .item:first-child, .swiperShow .item:first-child{
+  border: none;
+}
+.item .item_cover{
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+.item_show{
+  color: #fff;
+  background: url('http://audio.22family.com//gif/playing.gif') 0 0 /cover;
+}
+.item .item_info{
+  width: 100%;
+  min-height: 4rem;
+  padding: 0.5rem 0;
+  padding-left: 1rem;
+}
+.item .item_info .item_name{
+  font-size: 0.8rem;
+  align-self: flex-start;
+}
+.item .item_info .singer_name{
+  align-items: center;
+  padding: 0.7rem 0 0.3rem 0;
+  font-size: 0.7rem;
+  color: #666;
+}
+.item .item_info .singer_name .singer_avatar{
+  width: 1.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 0.4rem;
+}
+.item .item_info .singer_name .avatar_img{
+  width: 1rem;
+  height:1rem;
+  border-radius: 50%;
+}
+.item .item_info .item_date{
+  font-size: 0.6rem;
+  color: #999;
+}

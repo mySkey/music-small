@@ -1,0 +1,8 @@
+/**app.wxss**/
+@import './utils/wxss/reset.wxss';
+@import './utils/wxss/icon.wxss';
+@import './utils/wxss/style.wxss';
+.container {
+  height: 100%;
+  box-sizing: border-box;
+} 

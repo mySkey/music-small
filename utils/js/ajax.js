@@ -5,10 +5,7 @@ export default{
       wx.request({
         url: api_url + url,
         method: 'GET',
-        data: {
-          x: '',
-          y: ''
-        },
+        data,
         header: {
           'content-type': 'application/json' // 默认值
         },
@@ -26,10 +23,7 @@ export default{
       wx.request({
         url: api_url + url,
         method: 'POST',
-        data: {
-          x: '',
-          y: ''
-        },
+        data,
         header: {
           'content-type': 'application/json' // 默认值
         },

@@ -18,6 +18,7 @@ Page({
     ],
     types: ['推荐', '最热', '原创', '飙升', '最新'],
     currentType: 0,
+    swiperHeight: 0,
     startX: 0,
     endX: 0,
     lineWidth: 0,
@@ -44,7 +45,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    props.setPlayer.call(this, app.player)
   },
 
   getList(){
@@ -57,21 +58,50 @@ Page({
       this.setData({ loadingArr })
       if (res.code === 0) {
         let { audios, i_resource, a_resource, page } = res.data
-        this.saveMusics({ type, page, audios })
+        this.saveMusics({ type, page, audios }, ()=>{
+          this.getSwiperHeight((swiperHeight) => this.setData({ swiperHeight }))
+        })
         props.setPlayer.call(this, { i_resource, a_resource })
         props.setPlayer.call(this, { list: this.data.musics[type].audios })
       }
     })
   },
-  saveMusics(data){
+  saveMusics(data, cb){
     let { type, page, audios } = data;
     let musics = this.data.musics
     musics[type].audios = musics[type].audios.concat(audios)
     musics[type].page = page
-    this.setData({ musics })
+    this.setData({ musics }, ()=>{
+      cb && cb()
+    })
   },
   dateFormat(t){
     return dayjs(t * 1000).format('YYYY.MM.DD')
+  },
+  handleChangeIndex(e) {
+    let currentType = e.detail.current
+    let p = this.data.musics[currentType].page.p || 1
+    props.setPlayer.call(this, { list: this.data.musics[currentType].audios })
+    //console.log(app.player.list)
+    this.setData({ p, currentType }, () => {
+      if (this.data.musics[currentType].audios.length === 0) {
+        this.getList()
+      }
+      this.getSwiperHeight((swiperHeight) => this.setData({ swiperHeight }))
+    })
+  },
+  getSwiperHeight(cb) {
+    var query = wx.createSelectorQuery().in(this)
+    query.select('.swiperShow').boundingClientRect(function (res) {
+      cb && cb(res.height)
+    }).exec()
+  },
+  toDetail(event){
+    let { e, i } = event.currentTarget.dataset
+    props.setPlayer.call(this, { current_music: i })
+    wx.navigateTo({
+      url: `/pages/music/detail?id=${e.id}`
+    })
   },
   /**
    * 生命周期函数--监听页面隐藏
@@ -98,7 +128,18 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    let currentType = this.data.currentType
+    if (this.data.loadingArr[currentType] !== 0) return
+    if (this.data.musics[currentType].page.p >= this.data.musics[currentType].page.total_page) {
+      let loadingArr = this.data.loadingArr
+      loadingArr[currentType] = 2
+      this.setData({ loadingArr })
+      return
+    }
+    let p = this.data.musics[currentType].page.p + 1
+    this.setData({ p }, ()=>{
+      this.getList()
+    })
   },
 
   /**

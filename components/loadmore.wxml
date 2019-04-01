@@ -1,0 +1,10 @@
+<!--components/loadmore.wxml-->
+<view class='component-container wrap'>
+  <view class='loading-dot' wx:if='{{_loading==1}}'>
+    <view class='dot dot-1'></view>
+    <view class='dot dot-2'></view>
+    <view class='dot dot-3'></view>
+  </view>
+  <view class='all' wx:elif='{{_loading==2}}'>已加载全部</view>
+  <view class='placeholder' wx:else>　</view>
+</view>

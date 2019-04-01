@@ -1,0 +1,28 @@
+/* components/loadmore.wxss */
+.wrap{padding:20rpx 0 50rpx 0;}
+.loading-dot{
+  width:100%; height:40rpx; overflow:hidden; display:flex;
+  align-items:center; justify-content:center;
+}
+.loading-dot .dot{
+  display:inline-block; width:16rpx; height:16rpx; border-radius:50%; overflow: hidden; 
+  background:#f2f2f2; margin:0 10rpx;
+  -webkit-animation: bouncedelay 1s infinite ease-in-out;
+  animation: bouncedelay 1s infinite ease-in-out;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both
+}
+
+.loading-dot .dot-1 {-webkit-animation-delay: -.48s; animation-delay: -.48s}
+.loading-dot .dot-2 {-webkit-animation-delay: -.24s; animation-delay: -.24s}
+@keyframes bouncedelay {
+  0%,100%,80% {background:lightgray;}
+  40% {background:gray;}
+}
+/* @keyframes bouncedelay {
+  0%,100%,80% {transform: scale(0); -webkit-transform: scale(0)}
+  40% {transform: scale(1);-webkit-transform: scale(1)}
+} */
+
+.all{font-size:24rpx;color:#e8e8e8;text-align:center;}
+.placeholder{font-size:24rpx;}

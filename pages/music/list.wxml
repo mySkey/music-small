@@ -15,12 +15,17 @@
     </view>
   </view>
 
-  <swiper>
+  <swiper
+    circular="{{true}}"
+    current="{{currentType}}"
+    style="width:100%;height:{{swiperHeight}}px;"
+    bindchange='handleChangeIndex'
+  >
     <block wx:for="{{musics}}" wx:for-item='v' wx:for-index='k' wx:key='k'>
       <swiper-item>
         <view class="{{currentType === k ? 'swiperShow' : 'swiper'}}">
           <block wx:for="{{v.audios}}" wx:for-item="e" wx:for-index="i" wx:key="i">
-            <view class="item df {{player.playing.id === e.id && player.status === 1? 'item_show' : ''}}">
+            <view bindtap='toDetail' data-e="{{e}}" data-i="{{i}}" class="item df {{player.playing.id === e.id && player.status === 1? 'item_show' : ''}}">
               <image class='item_cover' src="{{'http://audio.22family.com/' + e.cover + '-cover'}}"></image>
               <view class='item_info df-1'>
                 <view class='item_name'>{{e.name}}</view>
@@ -38,4 +43,6 @@
       </swiper-item>
     </block>
   </swiper>
+
+  <loadmore class="component-container" loading='{{loadingArr[currentType]}}'></loadmore>
 </view>

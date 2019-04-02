@@ -1,0 +1,64 @@
+/* components/lrc.wxss */
+@import '/utils/wxss/style.wxss';
+@import '/utils/wxss/icon.wxss';
+.lrc_container{
+  position: absolute;
+  top: 80px;
+  left:0;
+}
+.lrcList{
+  width: 100vw;
+  text-align: center;
+  align-items: center;
+  padding-top: 160px;  /* 从第6句开始特殊滑动 */
+  padding-bottom: 3rem;
+}
+.lrcList .lrcItem{
+  color: #fff;
+  height: 32px;
+  line-height: 32px;
+  position: relative;
+  white-space: nowrap;
+}
+.lrcList .lrcItemShow{
+  position: absolute;
+  color: #fff;
+  font-size: 1rem;
+  top:0;
+  left:0;
+  z-index: 98;
+  white-space: nowrap;
+}
+.lrcList .lrcItemShowIng{
+  position: absolute;
+  color: #dd5866;
+  font-size: 1rem;
+  top:0;
+  left:0;
+  z-index: 99;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+}
+
+.swiper{
+  width: 100%;
+  height: 20px;
+  line-height: 20px;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  position: absolute;
+  top: 166px;   /* 从第六上面出现刻度线 */
+  left: 0;
+  align-items: center;
+  font-size: 0.6rem;
+  color: #db3e4b
+}
+.swiper .line{
+  width: 70%;
+  height: 1px;
+  background: radial-gradient(at 50% 0, transparent, transparent, rgba(252, 231, 231, 0.7),rgba(252, 231, 231, 0.7));
+}
+.swiper .play .icon-play{
+  font-size: 1rem;
+}

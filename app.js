@@ -26,5 +26,6 @@ App({
       timeArr: [],
       lrcArr: []
     }
-  }
+  },
+  audioDom: wx.createInnerAudioContext()
 })

@@ -24,5 +24,21 @@ export default {
   },
   hideLoading(){
     wx.hideLoading()
+  },
+  analysis(str) {
+    str = str.slice(str.indexOf('00:00.00'))
+    let s = str.replace(/[\s\r\n]/g, "").split('[');
+    let timeArr = [], lrcArr = [];
+    for (let v of s) {
+      let lrc = v.split(']')
+      timeArr.push(lrc[0])
+      lrcArr.push(lrc[1])
+    }
+    return { timeArr, lrcArr }
+  },
+  getAudioTime(num = 0) {
+    let minute = Math.floor(num / 60).toString();
+    let second = Math.floor(num % 60).toString();
+    return `${minute.padStart(2, '0')} : ${second.padStart(2, '0')}`
   }
 }

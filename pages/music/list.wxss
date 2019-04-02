@@ -45,8 +45,6 @@
 
 .swiper{
   width: 100%;
-  min-height: calc(100vh - 3rem);
-  max-height: calc(100vh - 3rem);
   padding-top: 2rem;
   padding-bottom: 3rem;
 }

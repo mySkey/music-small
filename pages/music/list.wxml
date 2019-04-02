@@ -26,12 +26,12 @@
         <view class="{{currentType === k ? 'swiperShow' : 'swiper'}}">
           <block wx:for="{{v.audios}}" wx:for-item="e" wx:for-index="i" wx:key="i">
             <view bindtap='toDetail' data-e="{{e}}" data-i="{{i}}" class="item df {{player.playing.id === e.id && player.status === 1? 'item_show' : ''}}">
-              <image class='item_cover' src="{{'http://audio.22family.com/' + e.cover + '-cover'}}"></image>
+              <image wx:if="{{player.i_resource}}" class='item_cover' src="{{player.i_resource + e.cover + '-cover'}}"></image>
               <view class='item_info df-1'>
                 <view class='item_name'>{{e.name}}</view>
                 <view class='singer_name df'>
                   <view class='singer_avatar'>
-                    <image class='avatar_img' src="{{'http://audio.22family.com/' + e.singer.avatar + '-avatar'}}"></image>
+                    <image wx:if="{{player.i_resource}}" class='avatar_img' src="{{player.i_resource + e.singer.avatar + '-avatar'}}"></image>
                   </view>
                   {{e.singer.name}}
                 </view>

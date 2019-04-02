@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/music/list",
-    "pages/music/detail"
+    "pages/music/detail",
+    "pages/music/list"
   ],
   "window": {
     "backgroundTextStyle": "light",

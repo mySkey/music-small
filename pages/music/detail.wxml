@@ -1,2 +1,8 @@
 <!--pages/music/detail.wxml-->
-<text>pages/music/detail.wxml</text>
+<view wx:if="{{player.i_resource}}" style="background:url({{player.i_resource + player.playing.cover + '-cover'}}) 0 0 /cover;" class='detail'>
+  <view class='detail_container'>
+    <lrc currentTime="{{player.playing.currentTime}}" bind:parentEvent='changeTo'></lrc>
+    <controls></controls>
+  </view>
+</view>
+

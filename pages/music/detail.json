@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "lrc": "/components/lrc",
+    "controls": "/components/controls"
+  }
 }

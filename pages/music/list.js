@@ -9,6 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    player:{},
     musics:[
       { audios: [], page: {} },   // 推荐
       { audios: [], page: {} },   // 最热

@@ -1,0 +1,27 @@
+<!--components/lrc.wxml-->
+<view class='lrc_container'>
+  <scroll-view 
+    scroll-y
+    style= "height:calc(100vh - 11rem)"
+    scroll-top="{{listTop}}"
+    bindtouchstart="handleMove"
+  >
+    <view class='lrcList df-col'>
+      <block wx:for="{{player.playing.lrcArr}}" wx:for-item="v" wx:for-index="k" wx:key="k">
+        <view class='lrcItem'>
+          <view style="visibility: {{currentLrc === k ? 'hidden' : 'visible'}}; font-size: {{currentLrc === k ? '1rem' : '0.7rem'}}" class='lrcItem'>{{v}}</view>
+          <view wx:if="{{currentLrc === k}}" class='lrcItemShow'>{{v}}</view>
+          <view style="width: {{currentWidth}}px; transition: all ease {{useTime}}s;" wx:if="{{currentLrc === k}}" class='lrcItemShowIng'>{{v}}</view>
+        </view>
+      </block>
+    </view>
+  </scroll-view>
+
+  <view wx:if="{{userChange}}" class='swiper df-j-b'>
+    <view></view>
+    <view class='line'></view>
+    <view bindtap='changeToLrc' class='play'>
+      <i class='iconfont icon-play'></i>
+    </view>
+  </view>
+</view>

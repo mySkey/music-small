@@ -40,5 +40,11 @@ export default {
     let minute = Math.floor(num / 60).toString();
     let second = Math.floor(num % 60).toString();
     return `${minute.padStart(2, '0')} : ${second.padStart(2, '0')}`
-  }
+  },
+  getSecond(t) {
+    let minute = Number(t.slice(0, 2))
+    let second = Number(t.slice(3, 5))
+    let minS = Number(t.slice(7))
+    return minS > 100 ? (minute * 60 + second + minS / 1000) : (minute * 60 + second + minS / 100)
+  },
 }

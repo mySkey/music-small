@@ -48,20 +48,23 @@ Page({
         props.setPlayer.call(this, { i_resource, a_resource, global_show: 1 })
 
         audioDom.src = a_resource + url;
-        setTimeout(() => {
-          audioDom.play()
-          audioDom.onPlay(()=> props.setPlaying.call(this, { duration: audioDom }))
-          audioDom.onTimeUpdate(() =>{
-            props.setPlaying.call(this, { currentTime: audioDom.currentTime })
-            //console.log(app.player.playing.currentTime)
-            this.setData({ audioDom: app.audioDom })
-          })
-        }, 500)
+        this.playAudio()
       }
     })
   },
-  changeTo(e){
-    this.data.audioDom.currentTime = e.detail.changeTo
+  playAudio(){
+    let audioDom = app.audioDom
+    setTimeout(() => {
+      wx.playBackgroundAudio({
+        dataUrl: app.player.a_resource + app.player.playing.url // wepy 全局存储音频链接变量
+      })
+      audioDom.onPlay(() => props.setPlaying.call(this, { duration: audioDom }))
+      audioDom.onTimeUpdate(() => {
+        //console.log(audioDom.currentTime)
+        props.setPlaying.call(this, { currentTime: audioDom.currentTime })
+        this.setData({ audioDom: app.audioDom })
+      })
+    }, 500)
   },
   /**
    * 生命周期函数--监听页面隐藏

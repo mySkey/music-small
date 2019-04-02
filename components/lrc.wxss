@@ -7,7 +7,7 @@
   left:0;
 }
 .lrcList{
-  width: 100vw;
+  width: 100%;
   text-align: center;
   align-items: center;
   padding-top: 160px;  /* 从第6句开始特殊滑动 */
@@ -23,7 +23,7 @@
 .lrcList .lrcItemShow{
   position: absolute;
   color: #fff;
-  font-size: 1rem;
+  font-size: 32rpx;
   top:0;
   left:0;
   z-index: 98;
@@ -32,7 +32,7 @@
 .lrcList .lrcItemShowIng{
   position: absolute;
   color: #dd5866;
-  font-size: 1rem;
+  font-size: 32rpx;
   top:0;
   left:0;
   z-index: 99;
@@ -45,13 +45,11 @@
   width: 100%;
   height: 20px;
   line-height: 20px;
-  padding: 0 1rem;
-  box-sizing: border-box;
   position: absolute;
   top: 166px;   /* 从第六上面出现刻度线 */
   left: 0;
   align-items: center;
-  font-size: 0.6rem;
+  font-size: 24rpx;
   color: #db3e4b
 }
 .swiper .line{
@@ -60,5 +58,5 @@
   background: radial-gradient(at 50% 0, transparent, transparent, rgba(252, 231, 231, 0.7),rgba(252, 231, 231, 0.7));
 }
 .swiper .play .icon-play{
-  font-size: 1rem;
+  font-size: 50rpx;
 }

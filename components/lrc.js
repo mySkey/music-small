@@ -1,6 +1,7 @@
 // components/lrc.js
 const app = getApp()
 import props from '../utils/js/props.js'
+import common from '../utils/js/common.js'
 Component({
   /**
    * 组件的属性列表
@@ -10,8 +11,7 @@ Component({
       type: Number,
       value: 0,
       observer: function (newVal, oldVal, changedPath) {
-        if(this.data.player.playing.lrcArr.length>0){
-          //console.log(newVal)
+        if(app.player.playing.lrcArr.length>0){
           props.setPlaying.call(this, { currentTime: newVal })
           this.getCurrentLrc()
         }
@@ -32,7 +32,7 @@ Component({
     changeTo: 0
   },
   attached() {
-    console.log(app.player)
+    //console.log(app.player)
     this.setData({ player: app.player })
   },
 
@@ -78,6 +78,7 @@ Component({
     getCurrentWidth(cb){
       let query = wx.createSelectorQuery().in(this)
       query.select('.lrcItemShow').boundingClientRect(function (res) {
+        console.log(res.width)
         cb && cb(res.width)
       }).exec()
     },
@@ -96,20 +97,29 @@ Component({
     },
     // 滑动歌词调整进度
     handleMove() {
+      if(this.data.userChange){
+        let query = wx.createSelectorQuery().in(this)
+        query.select('.lrcList').boundingClientRect((res)=>{
+          //console.log(res.top / 32)
+          let currentLrc = (-Math.round(res.top / 32)) + 3
+          let time = app.player.playing.timeArr[currentLrc]
+          let currentTime = Math.ceil(common.getSecond(time))
+          this.setData({ changeTo: currentTime })
+        }).exec()
+      }
+    },
+    changeUserStatus(){
       clearTimeout(this.timer)
       this.setData({ userChange: true })
       this.timer = setTimeout(() => {
         this.setData({ userChange: false })
       }, 5000)
-      let currentLrc = Math.round(this.data.listTop / 32)
-      let time = this.data.player.playing.timeArr[currentLrc]
-      let currentTime = Math.ceil(this.getSecond(time))
-      this.setData({ changeTo: currentTime })
     },
     changeToLrc() {
       this.setData({ userChange: false }, () => {
-        //app.audioDom.currentTime = this.data.changeTo;
-        this.triggerEvent('parentEvent', {changeTo: 50})
+        wx.seekBackgroundAudio({
+          position: this.data.changeTo,
+        })
       })
     }
   }

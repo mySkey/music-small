@@ -1,7 +1,7 @@
 //app.js
 App({
   onLaunch: function () {
-   
+    this.initAudio()
   },
   player: {
     list: [],
@@ -27,5 +27,12 @@ App({
       lrcArr: []
     }
   },
-  audioDom: wx.createInnerAudioContext()
+  audioDom: wx.getBackgroundAudioManager(),
+  initAudio(){
+    this.audioDom.title = '起风了';
+    this.audioDom.epname = '123';
+    this.audioDom.singer = 'mySkey';
+    this.audioDom.coverImgUrl = 'http://img.22family.com/mySKey/favicon.ico';
+    this.audioDom.paused = true;
+  }
 })

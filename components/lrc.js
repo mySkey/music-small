@@ -11,7 +11,7 @@ Component({
       type: Number,
       value: 0,
       observer: function (newVal, oldVal, changedPath) {
-        if(app.player.playing.lrcArr.length>0){
+        if (app.player.playing.lrcArr.length > 0){
           props.setPlaying.call(this, { currentTime: newVal })
           this.getCurrentLrc()
         }
@@ -79,7 +79,9 @@ Component({
       let query = wx.createSelectorQuery().in(this)
       query.select('.lrcItemShow').boundingClientRect(function (res) {
         //console.log(res.width)
-        cb && cb(res.width)
+        if(res){
+          cb && cb(res.width)
+        }
       }).exec()
     },
     getSecond(t) {

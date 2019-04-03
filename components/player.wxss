@@ -1,1 +1,66 @@
 /* components/player.wxss */
+@import '/utils/wxss/style.wxss';
+@import '/utils/wxss/icon.wxss';
+.player{
+  width: 90%;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.3rem;
+  box-sizing: border-box;
+  position: fixed;
+  z-index: 9999;
+  background: #999;
+  bottom: 4rem;
+  left:5%;
+  align-items: center;
+}
+
+.avatar{
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 0.5rem;
+}
+.avatar_img{
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+}
+
+.content{
+  color: #fff;
+  font-size: 0.7rem;
+}
+.content .singer{
+  margin-top: 0.2rem;
+  font-size: 0.6rem;
+  color: #d2d2d2;
+}
+.content .right{
+  align-items: center;
+}
+.content .right .controls{
+  align-items: center;
+}
+.content .right .controls .last_next{
+  font-size:1rem;
+}
+.content .right .controls .play_pause{
+  font-size: 1.7rem;
+  margin: 0 0.3rem;
+}
+.content .right .delete{
+  align-items: center;
+  margin-left: 1rem;
+}
+.content .right .delete .line{
+  height: 1.3rem;
+  width: 2px;
+  background: #fff;
+  margin-right: 0.5rem;
+}
+
+@keyframes rotateImg{
+  from{transform: rotate(0);}
+  to{transform: rotate(360deg);}
+}

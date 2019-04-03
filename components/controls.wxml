@@ -11,20 +11,20 @@
   </view>
 
   <view class='btns df-j-c'>
-    <view class='mode_rete df-j-c'>
+    <view bindtap='changeMode' class='mode_rete df-j-c'>
       <i wx:if="{{player.mode === 0}}" class='mode iconfont icon-only'></i>
-      <i wx:if="{{player.mode === 1}}" class='mode iconfont icon-only'></i>
-      <i wx:if="{{player.mode === 2}}" class='mode iconfont icon-only'></i>
+      <i wx:if="{{player.mode === 1}}" class='mode iconfont icon-next'></i>
+      <i wx:if="{{player.mode === 2}}" class='mode iconfont icon-suiji'></i>
     </view>
     <view class='play_btn df-j-c'>
-      <i class='last_next iconfont icon-last-play'></i>
+      <i bindtap='playLast' class='last_next iconfont icon-last-play'></i>
       <view>
-        <i wx:if="{{player.status === 1}}" class='play_pause iconfont icon-pause'></i>
-        <i wx:else class='play_pause iconfont icon-play'></i>
+        <i bindtap='pauseAudio' wx:if="{{player.status == 1}}" class='play_pause iconfont icon-pause'></i>
+        <i bindtap='palyAudio' wx:else class='play_pause iconfont icon-play'></i>
       </view>
-      <i class='last_next iconfont icon-next-play'></i>
+      <i bindtap='playNext' class='last_next iconfont icon-next-play'></i>
     </view>
-    <view class='mode_rete df-j-c'>
+    <view bindtap='changeRate' class='mode_rete df-j-c'>
       <view wx:if="{{player.playbackRate === 1}}">正常</view>
       <view wx:else>×{{player.playbackRate}}</view>
     </view>

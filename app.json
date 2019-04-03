@@ -9,5 +9,5 @@
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black"
   },
-  "requiredBackgroundModes": ["audio","backgroundAudioManager"]
+  "requiredBackgroundModes": ["audio"]
 }

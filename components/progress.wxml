@@ -2,6 +2,12 @@
 <view>
   <view bindtouchstart='swiperTouch' class='swiper'>
     <view style="width: {{left}}px;" class='line'></view>
-    <view style="width: {{sliderW}}px; height: {{sliderW}}px; left: {{left}}px; top: {{sliderW / 2 -3}}px" class='slider'></view>
+    <view
+      class='slider' 
+      style="width: {{sliderW}}px; height: {{sliderW}}px; left: {{left}}px; top: {{-(sliderW / 2 -3)}}px"
+      catchtouchstart='touchStart'
+      bindtouchmove='touchMove'
+      bindtouchend='touchEnd'
+    ></view>
   </view>
 </view>

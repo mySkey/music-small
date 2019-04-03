@@ -34,5 +34,6 @@ App({
     this.audioDom.singer = 'mySkey';
     this.audioDom.coverImgUrl = 'http://img.22family.com/mySKey/favicon.ico';
     this.audioDom.paused = true;
+    this.audioDom.stop = true;
   }
 })

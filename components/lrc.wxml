@@ -1,4 +1,6 @@
 <!--components/lrc.wxml-->
+<wxs module="time" src="../utils/wxs/time.wxs"></wxs>
+
 <view class='lrc_container'>
   <scroll-view 
     scroll-y
@@ -19,7 +21,7 @@
   </scroll-view>
 
   <view wx:if="{{userChange}}" class='swiper df-j-b'>
-    <view>{{changeTo}}</view>
+    <view>{{time.getAudioTime(changeTo)}}</view>
     <view class='line'></view>
     <view bindtap='changeToLrc' class='play'>
       <i class='iconfont icon-play'></i>

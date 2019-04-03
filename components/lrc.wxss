@@ -51,7 +51,7 @@
   top: 166px;   /* 从第六上面出现刻度线 */
   left: 0;
   align-items: center;
-  font-size: 40rpx;
+  font-size: 28rpx;
   color: #db3e4b
 }
 .swiper .line{

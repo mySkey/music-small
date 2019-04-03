@@ -47,4 +47,5 @@
   </swiper>
 
   <loadmore class="component-container" loading='{{loadingArr[currentType]}}'></loadmore>
+  <playerBar currentTime="{{player.playing.currentTime}}" bind:updatePlayer="updatePlayer"></playerBar>
 </view>

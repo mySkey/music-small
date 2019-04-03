@@ -1,2 +1,26 @@
 <!--components/player.wxml-->
-<text>components/player.wxml</text>
+<view bindtap='toDtail' wx:if="{{player.global_show && player.playing.id}}" class='player df-j-b'>
+  <view class='avatar'>
+    <image wx:if="{{player.i_resource &&  player.playing.cover}}" style="{{player.status === 1 ? 'animation: rotateImg 4s infinite linear' : ''}}" class='avatar_img' src="{{player.i_resource + player.playing.cover+'-cover'}}"></image>
+  </view>
+  <view class='content df-1 df-j-b'>
+    <view class='info df-col'>
+      <view class='name'>{{player.playing.name}}</view>
+      <view class='singer'>{{player.playing.singer.name}}</view>
+    </view>
+    <view class='right df-j-b'>
+      <view class='controls df-j-b'>
+        <i catchtap="playLast" class='last_next iconfont icon-last-play'></i>
+        <view>
+          <i catchtap="pauseAudio" wx:if="{{player.status == 1}}" class='play_pause iconfont icon-pause'></i>
+          <i catchtap="playAudio" wx:else class='play_pause iconfont icon-play'></i>
+        </view>
+        <i catchtap='playNext' class='last_next iconfont icon-next-play'></i>
+      </view>
+      <view class='delete df'>
+        <view class='line'></view>
+        <i catchtap="closePlayer" class='iconfont icon-error'></i>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,5 +1,5 @@
 <!--pages/music/detail.wxml-->
-<view wx:if="{{player.i_resource && player.playing.cover}}" style="background:url({{player.i_resource + player.playing.cover + '-cover'}}) 0 0/cover;" class='detail'>
+<view wx:if="{{player.i_resource && player.playing.cover}}" style="background:url({{player.i_resource + player.playing.cover + '-ph'}}) 0 0 / cover;" class='detail'>
   <view class='detail_container'>
     <lrc currentTime="{{player.playing.currentTime}}"></lrc>
     <controls currentTime="{{player.playing.currentTime}}" bind:playLast="playLast" bind:playNext="playNext"></controls>

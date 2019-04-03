@@ -46,7 +46,18 @@ Page({
     props.setPlayer.call(this, app.player)
     this.audioWatch()
   },
-
+  updeData(current_music){
+    if (current_music !== this.data.current_music) {
+      this.setData({ current_music }, () => {
+        let id = app.player.list[current_music].id
+        this.setData({ id }, ()=>{
+          if (this.data.id !== app.player.playing.id) {
+            this.getDetail()
+          }
+        })
+      })
+    }
+  },
   getDetail() {
     ajax.get('audio/detail', { id: this.data.id }).then(res => {
       if (res.code === 0) {
@@ -101,7 +112,7 @@ Page({
               title: player.list[current_music].name,
               coverImgUrl: player.i_resource + player.list[current_music].cover
             })
-            props.setPlayer.call(this, { current_music })
+            this.updeData(current_music)
             return
           }
           app.audioDom.pause()
@@ -114,7 +125,7 @@ Page({
               title: player.list[current_music].name,
               coverImgUrl: player.i_resource + player.list[current_music].cover
             })
-            props.setPlayer.call(this, { current_music })
+            this.updeData(current_music)
             return
           }
           app.audioDom.pause()

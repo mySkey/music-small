@@ -104,6 +104,21 @@ Page({
       url: `/pages/music/detail?id=${e.id}`
     })
   },
+  handleTouchStart(e) {
+    let startX = e.touches[0].clientX
+    this.setData({ startX })
+  },
+  handleTouchMove(e) {
+    let endX = e.touches[0].clientX
+    if (endX - this.data.startX > 0) {
+      this.setData({ lineLeft: (endX - this.data.startX) / 10, lineWidth: (endX - this.data.startX) / 10 })
+    } else {
+      this.setData({ lineWidth: (this.data.startX - endX) / 10 })
+    }
+  },
+  handleTouchEnd(e) {
+    this.setData({ lineWidth: 0, lineLeft: 0 })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

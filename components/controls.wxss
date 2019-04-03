@@ -1,1 +1,44 @@
 /* components/controls.wxss */
+@import '/utils/wxss/style.wxss';
+@import '/utils/wxss/icon.wxss';
+.controls{
+  width: 100%;
+  position: absolute;
+  bottom: 2rem;
+  left: 0;
+}
+.controls .time{
+  color: #fff;
+  font-size: 0.6rem;
+  align-items: center;
+}
+.controls .time .progress{
+  width: 10rem;
+  margin: 0 16px;
+}
+
+.controls .btns{
+  align-items: center;
+  color: #dd5866;
+}
+.controls .btns .play_btn{
+  align-items: center;
+  margin: 0 2rem;
+}
+.controls .btns .last_next{
+  font-size: 1.2rem;
+}
+.controls .btns .play_pause{
+  font-size: 2.4rem;
+  margin: 0 1rem;
+}
+
+.controls .btns .mode_rete{
+  align-items: center;
+  font-size: 0.7rem;
+  color: #fff;
+  min-width: 40px;
+}
+.controls .btns .mode_rete .mode{
+  font-size: 1rem;
+}

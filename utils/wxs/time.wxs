@@ -1,0 +1,16 @@
+// wxs中只支持到es4的语法，所以别使用es6
+module.exports = {
+  getAudioTime: function(num) {
+    num = Number(num)
+    var minute = Math.floor(num / 60)
+    var second = Math.floor(num % 60)
+    return ( minute>9 ? minute : '0'+minute) + ' : ' + (second>9 ? second : '0'+second)
+  },
+  dateFormat: function(t) {
+    var date = getDate(t * 1000)
+    var year = date.getFullYear()
+    var month = date.getMonth() + 1
+    var day = date.getDate()
+    return year + '.' + (month>9 ? month : '0' + month) + '.' + (day>9 ? day : '0' + day)
+  }
+}

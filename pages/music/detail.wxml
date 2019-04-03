@@ -2,7 +2,7 @@
 <view wx:if="{{player.i_resource}}" style="background:url({{player.i_resource + player.playing.cover + '-cover'}}) 0 0 /cover;" class='detail'>
   <view class='detail_container'>
     <lrc currentTime="{{player.playing.currentTime}}"></lrc>
-    <controls></controls>
+    <controls currentTime="{{player.playing.currentTime}}"></controls>
   </view>
 </view>
 

@@ -78,7 +78,7 @@ Component({
     getCurrentWidth(cb){
       let query = wx.createSelectorQuery().in(this)
       query.select('.lrcItemShow').boundingClientRect(function (res) {
-        console.log(res.width)
+        //console.log(res.width)
         cb && cb(res.width)
       }).exec()
     },

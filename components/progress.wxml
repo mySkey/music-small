@@ -1,2 +1,7 @@
 <!--components/progress.wxml-->
-<text>components/progress.wxml</text>
+<view>
+  <view bindtouchstart='swiperTouch' class='swiper'>
+    <view style="width: {{left}}px;" class='line'></view>
+    <view style="width: {{sliderW}}px; height: {{sliderW}}px; left: {{left}}px; top: {{sliderW / 2 -3}}px" class='slider'></view>
+  </view>
+</view>

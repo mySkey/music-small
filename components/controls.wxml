@@ -1,2 +1,32 @@
 <!--components/controls.wxml-->
-<text>components/controls.wxml</text>
+<wxs module="time" src="../utils/wxs/time.wxs"></wxs>
+
+<view class='controls'>
+  <view class='time df-j-c'>
+    <view>{{time.getAudioTime(player.playing.currentTime)}}</view>
+    <view class='progress'>
+      <myProgress currentTime="{{player.playing.currentTime}}"></myProgress>
+    </view>
+    <view>{{time.getAudioTime(player.playing.duration)}}</view>
+  </view>
+
+  <view class='btns df-j-c'>
+    <view class='mode_rete df-j-c'>
+      <i wx:if="{{player.mode === 0}}" class='mode iconfont icon-only'></i>
+      <i wx:if="{{player.mode === 1}}" class='mode iconfont icon-only'></i>
+      <i wx:if="{{player.mode === 2}}" class='mode iconfont icon-only'></i>
+    </view>
+    <view class='play_btn df-j-c'>
+      <i class='last_next iconfont icon-last-play'></i>
+      <view>
+        <i wx:if="{{player.status === 1}}" class='play_pause iconfont icon-pause'></i>
+        <i wx:else class='play_pause iconfont icon-play'></i>
+      </view>
+      <i class='last_next iconfont icon-next-play'></i>
+    </view>
+    <view class='mode_rete df-j-c'>
+      <view wx:if="{{player.playbackRate === 1}}">正常</view>
+      <view wx:else>×{{player.playbackRate}}</view>
+    </view>
+  </view>
+</view>

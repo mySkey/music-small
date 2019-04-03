@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/music/detail",
-    "pages/music/list"
+    "pages/music/list",
+    "pages/music/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -9,5 +9,5 @@
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black"
   },
-  "requiredBackgroundModes": ["audio"]
+  "requiredBackgroundModes": ["audio","backgroundAudioManager"]
 }

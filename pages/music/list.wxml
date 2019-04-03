@@ -1,4 +1,6 @@
 <!--pages/music/list.wxml-->
+<wxs module="time" src="../../utils/wxs/time.wxs"></wxs>
+
 <view>
   <view class='typeTitle'>
     <view class='typeList df-j-b'>
@@ -23,7 +25,7 @@
   >
     <block wx:for="{{musics}}" wx:for-item='v' wx:for-index='k' wx:key='k'>
       <swiper-item>
-        <view class="{{currentType === k ? 'swiperShow' : 'swiper'}}">
+        <view bindtouchstart='handleTouchStart' bindtouchmove='handleTouchMove' bindtouchend='handleTouchEnd' class="{{currentType === k ? 'swiperShow' : 'swiper'}}">
           <block wx:for="{{v.audios}}" wx:for-item="e" wx:for-index="i" wx:key="i">
             <view bindtap='toDetail' data-e="{{e}}" data-i="{{i}}" class="item df {{player.playing.id === e.id && player.status === 1? 'item_show' : ''}}">
               <image wx:if="{{player.i_resource}}" class='item_cover' src="{{player.i_resource + e.cover + '-cover'}}"></image>
@@ -35,7 +37,7 @@
                   </view>
                   {{e.singer.name}}
                 </view>
-                <view class='item_date'>{{dateFormat(e.date)}}</view>
+                <view class='item_date'>{{time.dateFormat(e.date)}}</view>
               </view>
             </view>
           </block>

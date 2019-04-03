@@ -65,7 +65,7 @@ Page({
         let { lrc, id, url, cover, singer, name } = res.data.audio
         let { timeArr, lrcArr } = common.analysis(lrc)
         props.setPlaying.call(this, { id, timeArr, lrcArr, url, singer, name, cover })
-        props.setPlayer.call(this, { i_resource, a_resource, global_show: 1 })
+        props.setPlayer.call(this, { i_resource, a_resource, global_show: 1, status: 1 })
 
         this.playAudio()
       }
@@ -86,8 +86,10 @@ Page({
       props.setPlayer.call(this, { status: 1 })
       props.setPlaying.call(this, { duration: audioDom })
     })
+    audioDom.onPause(()=>{
+      props.setPlayer.call(this, { status: 2 })
+    })
     audioDom.onTimeUpdate(() => {
-      props.setPlayer.call(this, { status: 1 })
       props.setPlaying.call(this, { currentTime: audioDom.currentTime })
     })
     audioDom.onEnded(()=>{

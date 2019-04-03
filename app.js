@@ -3,6 +3,9 @@ App({
   onLaunch: function () {
     this.initAudio()
   },
+  onHide: function () {
+    this.player.status = 2;
+  },
   player: {
     list: [],
     current_music: 0,

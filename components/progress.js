@@ -58,7 +58,7 @@ Component({
       this.setData({ left: endX - startX })
       let position = ((endX - startX) / swiperWidth) * app.audioDom.duration
       wx.seekBackgroundAudio({
-        position,
+        position: Math.round(position),
       })
     },
     touchStart(e) {
@@ -85,7 +85,7 @@ Component({
       //this.props.changeProgress(this.data.left / swiperWidth)
       let position = (this.data.left / swiperWidth) * app.audioDom.duration
       wx.seekBackgroundAudio({
-        position,
+        position: Math.round(position),
       })
     }
   }

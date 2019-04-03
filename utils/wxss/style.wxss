@@ -1,5 +1,5 @@
 html{
-  font-size: 5.3333333333vw;
+  font-size: 7.3333333333vw;
   background: #fff;
   -moz-user-select: none; /*火狐*/
   -webkit-user-select: none;  /*webkit浏览器*/

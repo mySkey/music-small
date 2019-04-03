@@ -32,7 +32,7 @@ Component({
   methods: {
     pauseAudio() {
       app.audioDom.pause()
-      if (app.audioDom.paused) props.setPlayer.call(this, { status: 2 })
+      props.setPlayer.call(this, { status: 2 })
     },
     palyAudio() {
       app.audioDom.play()

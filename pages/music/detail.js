@@ -90,61 +90,67 @@ Page({
       props.setPlayer.call(this, { status: 2 })
     })
     audioDom.onTimeUpdate(() => {
+      // 安卓监听不到，我们只能在这里执行播放完毕
+      if (audioDom.currentTime == 0) {
+        this.audioEnded()
+      }
       props.setPlaying.call(this, { currentTime: audioDom.currentTime })
     })
-    audioDom.onEnded(()=>{
-      let player = app.player, playing = app.player.playing;
-      let mode = app.player.mode;
-      switch (mode) {  // 0 单曲    1 顺序   2 随机
-        case 0:
-          wx.playBackgroundAudio({
-            dataUrl: player.a_resource + playing.url,
-            title: playing.name,
-            coverImgUrl: player.i_resource + playing.cover
-          })
-          break;
-        case 1:
-          if (player.list.length > 0) {
-            let current_music = player.current_music + 1
-            if (current_music >= player.list.length) {
-              current_music = 0;
-            }
-            wx.playBackgroundAudio({
-              dataUrl: player.a_resource + player.list[current_music].url,
-              title: player.list[current_music].name,
-              coverImgUrl: player.i_resource + player.list[current_music].cover
-            })
-            this.updeData(current_music)
-            return
-          }
-          app.audioDom.pause()
-          break;
-        case 2:
-          if (player.list.length > 0) {
-            let current_music = Math.floor(Math.random() * player.list.length)
-            wx.playBackgroundAudio({
-              dataUrl: player.a_resource + player.list[current_music].url,
-              title: player.list[current_music].name,
-              coverImgUrl: player.i_resource + player.list[current_music].cover
-            })
-            this.updeData(current_music)
-            return
-          }
-          app.audioDom.pause()
-          break;
-        default:
-          app.audioDom.pause()
-      }
+    audioDom.onEnded(() => {
+      // 安卓监听不到
     })
+  },
+  audioEnded(){
+    let player = app.player, playing = app.player.playing;
+    let mode = app.player.mode;
+    switch (mode) {  // 0 单曲    1 顺序   2 随机
+      case 0:
+        wx.playBackgroundAudio({
+          dataUrl: player.a_resource + playing.url,
+          title: playing.name,
+          coverImgUrl: player.i_resource + playing.cover + '-ph'
+        })
+        break;
+      case 1:
+        if (player.list.length > 0) {
+          let current_music = player.current_music + 1
+          if (current_music >= player.list.length) {
+            current_music = 0;
+          }
+          wx.playBackgroundAudio({
+            dataUrl: player.a_resource + player.list[current_music].url,
+            title: player.list[current_music].name,
+            coverImgUrl: player.i_resource + player.list[current_music].cover + '-ph'
+          })
+          this.updeData(current_music)
+          return
+        }
+        app.audioDom.pause()
+        break;
+      case 2:
+        if (player.list.length > 0) {
+          let current_music = Math.floor(Math.random() * player.list.length)
+          wx.playBackgroundAudio({
+            dataUrl: player.a_resource + player.list[current_music].url,
+            title: player.list[current_music].name,
+            coverImgUrl: player.i_resource + player.list[current_music].cover + '-ph'
+          })
+          this.updeData(current_music)
+          return
+        }
+        app.audioDom.pause()
+        break;
+      default:
+        app.audioDom.pause()
+    }
   },
   playAudio(){
     let audioDom = app.audioDom
     wx.playBackgroundAudio({
       title: app.player.playing.name,
-      coverImgUrl: app.player.i_resource + app.player.playing.cover + '-cover',
+      coverImgUrl: app.player.i_resource + app.player.playing.cover + '-ph',
       dataUrl: app.player.a_resource + app.player.playing.url // wepy 全局存储音频链接变量
     })
-    this.audioWatch()
   },
   playLast() {
     let current_music = app.player.current_music - 1

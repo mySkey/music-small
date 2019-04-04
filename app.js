@@ -3,8 +3,13 @@ App({
   onLaunch: function () {
     this.initAudio()
   },
+  onShow(){
+    if(this.audioDom.paused){
+      this.player.status = 2;
+    }
+  },
   onHide: function () {
-    this.player.status = 2;
+    
   },
   player: {
     list: [],

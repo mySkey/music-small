@@ -5,7 +5,7 @@
   <view class='typeTitle'>
     <view class='typeList df-j-b'>
       <block wx:for="{{types}}" wx:for-item='v' wx:for-index='k' wx:key='k'>
-        <view class="{{k===currentType ? 'itemShow' : ''}} typeItem">{{v}}</view>
+        <view bindtap='changeAudio' data-k="{{k}}" class="{{k===currentType ? 'itemShow' : ''}} typeItem">{{v}}</view>
       </block>
     </view>
     <view class='navSwiper'>

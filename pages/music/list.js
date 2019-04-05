@@ -81,6 +81,10 @@ Page({
   dateFormat(t){
     return dayjs(t * 1000).format('YYYY.MM.DD')
   },
+  changeAudio(e){
+    let currentType = e.currentTarget.dataset.k
+    this.setData({ currentType })
+  },
   handleChangeIndex(e) {
     let currentType = e.detail.current
     let p = this.data.musics[currentType].page.p || 1

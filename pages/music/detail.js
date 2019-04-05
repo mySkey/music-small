@@ -129,6 +129,9 @@ Page({
   },
   playAudio(){
     let audioDom = app.audioDom
+    wx.setNavigationBarTitle({
+      title: app.player.playing.name
+    })
     audioDom.title = app.player.playing.name
     audioDom.src = app.player.a_resource + app.player.playing.url
     audioDom.coverImgUrl = app.player.i_resource + app.player.playing.cover + '-ph'

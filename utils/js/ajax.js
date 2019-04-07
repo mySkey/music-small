@@ -1,4 +1,4 @@
-let api_url = 'https://www.22family.com/music/ph/'
+let api_url = 'https://api.22family.com/music/ph/'
 export default{
   get(url, data){
     return new Promise((resolve, reject)=>{

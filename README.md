@@ -1,6 +1,6 @@
 ### 扫码预览
 
-<div style="width:100%;text-align:center;"><img src="http://img.22family.com/mySKey/small.jpg" /></div>
+<div align=center><img src="http://img.22family.com/mySKey/small.jpg" /></div>
 
 ### 一、需求分析
 

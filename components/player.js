@@ -55,15 +55,14 @@ Component({
       this.playCurrent(current_music)
     },
     playCurrent(current_music) {
-      let { id, name, cover, url, singer } = app.player.list[current_music]
-      props.setPlaying.call(this, { id, name, cover, url, singer })
-      let dataUrl = app.player.a_resource + app.player.list[current_music].url
-      wx.playBackgroundAudio({
-        dataUrl,
-        title: name,
-        coverImgUrl: app.player.i_resource + cover + '-cover'
-      })
       props.setPlayer.call(this, { current_music, status: 1 })
+      props.setPlaying.call(this, app.player.list[current_music], ()=>{
+        let audioDom = app.audioDom
+        audioDom.title = app.player.playing.name
+        audioDom.src = app.player.a_resource + app.player.playing.url
+        audioDom.coverImgUrl = app.player.i_resource + app.player.playing.cover + '-ph'
+        audioDom.play()
+      }) 
       this.triggerEvent('updatePlayer')
     },
     closePlayer() {
